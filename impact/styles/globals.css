@@ -1,0 +1,69 @@
+/* Dashboard CSS */
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+/* Layout with flex */
+
+
+
+/* Marging */
+.i-my-1{margin-top:  1rem;margin-bottom: 1rem;}
+.i-my-2 {margin-top: 2rem;margin-bottom: 2rem;}
+
+.i-mx-1 {margin-right: 1rem;margin-left: 1rem;}
+.i-mx-2 {margin-right: 2rem;margin-left: 2rem;}
+
+/* Padding */
+.i-py-1 {padding-top: 1rem;padding-bottom: 1rem;}
+
+.i-px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+/* Cursor */
+.i-cur-ptr{
+cursor: pointer;
+}
+
+
+
+/* Widths */
+.i-w-5{
+  width: 5rem;
+}
+
+
+/* borders */
+.i-bd-cc{
+  border: 1px solid #CCC;
+  
+}
+.i-bdb-cc {
+  border-bottom: 1px solid #CCC;
+
+}
+
+
+
+/* font size */
+.i-fs-2{
+  font-size: 2rem;
+}
+.i-fs-1 {
+  font-size: 1rem;
+}
+
+/* font bold */
+.i-fb-bld{
+font-weight: bold;
+}
+.i-fb-600 {
+  font-weight: 600;
+}

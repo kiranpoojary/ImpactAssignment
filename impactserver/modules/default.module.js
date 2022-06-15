@@ -38,9 +38,9 @@ module.exports =
                     const std = students[index]
                     const inserted = await this.insertStudent(std)
                     if (inserted) {
-                        result.inserted.push(std.id)
+                        result.inserted.push(std)
                     } else {
-                        result.failed.push(std.id)
+                        result.failed.push(std)
                     }
                 }
                 let message = students.length == result.inserted.length
@@ -72,17 +72,22 @@ module.exports =
             try {
                 let allStudents = await this.pg.query("SELECT * FROM students")
                 if (allStudents?.rows?.length > 0) {
+                    if (!result) {
+                        return ({ statusCode: 200, found: true, students: allStudents?.rows })
+                    } else {
+                        let stdResult = allStudents.rows.reduce((result, std) => {
+                            if (((std.mark1 + std.mark2 + std.mark3) / 3) >= 35 && (std.mark1 >= 35 && std.mark2 >= 35 && std.mark3 >= 35)) {
+                                result?.passed.push(std)
+                            } else {
+                                result?.failed.push(std)
+                            }
+                            return result
+                        }, { passed: [], failed: [] })
 
-                    let stdResult = allStudents.rows.reduce((result, std) => {
-                        if (((std.mark1 + std.mark2 + std.mark3) / 3) >= 35 && (std.mark1 >= 35 && std.mark2 >= 35 && std.mark3 >= 35)) {
-                            result?.passed.push(std)
-                        } else {
-                            result?.failed.push(std)
-                        }
-                        return result
-                    }, { passed: [], failed: [] })
+                        return ({ statusCode: 200, found: (stdResult[result] || []).length > 0, students: stdResult[result] })
+                    }
 
-                    return ({ statusCode: 200, found: (stdResult[result] || []).length > 0, students: stdResult[result] })
+
 
                 } else {
                     return ({ statusCode: 200, found: false, message: `No students  found in your database` })
