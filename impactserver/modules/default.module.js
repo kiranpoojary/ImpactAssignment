@@ -8,7 +8,7 @@ module.exports =
                 host: "localhost",
                 database: "impactdb",
                 user: "postgres",
-                password: "hire123",
+                password: "",
                 max: 2000,
                 min: 4,
                 idleTimeoutMillis: 1000,

@@ -6,7 +6,7 @@ import Result from '../components/result';
 import AddStudent from '../components/addstudent';
 
 export default function Home() {
-  const [pageInfo, setPageInfo] = useState({ activeTab: 'students', id: null })
+  const [pageInfo, setPageInfo] = useState({ activeTab: 'students', id: '' })
   const [serachID, setSerachID] = useState(null)
   const [input, setInput] = useState([])
 
